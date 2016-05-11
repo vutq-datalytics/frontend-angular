@@ -1,0 +1,13 @@
+{
+  "name": "frontend-angular",
+  "version": "0.0.1",
+  "description": "frontend angular 2",
+  "private": true,
+  "main": "src/app.js",
+  "ignore": [],
+  "dependencies": {
+    "jquery": "2.2.3",
+    "bootstrap": "3.3.6",
+    "font-awesome": "4.3.0"
+  }
+}
