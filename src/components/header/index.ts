@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'header',
-  templateUrl: 'src/components/header/index.html',
-  directives: [ ROUTER_DIRECTIVES ]
+    selector: 'header',
+    templateUrl: 'src/components/header/index.html',
+    directives: [ ROUTER_DIRECTIVES ]
 })
 
 export class Header {
-
-  constructor() {
-  }
+    constructor(private router: Router) {}
 
 }

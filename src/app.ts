@@ -1,38 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, provide, ComponentRef } from '@angular/core';
 import { bootstrap } from '@angular/platform-browser-dynamic';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router';
+import { LocationStrategy, PathLocationStrategy, Location, APP_BASE_HREF } from '@angular/common';
+import { HTTP_PROVIDERS } from '@angular/http';
+// Add the RxJS Observable operators we need in this app.
+import './rxjs-operators';
+
+import { API } from './services/api.service';
+
 import { Header } from './components/header/index';
 import { Footer } from './components/footer/index';
-import { Home } from './components/home/index';
-import { Gallery } from './components/gallery/index';
+import { APP_ROUTER_PROVIDERS } from './app.routes';
+
 @Component({
-    selector: 'my-app',
+    selector: 'dtl-app',
     template: `
         <header></header>
-        <router-outlet></router-outlet>
+        <div class="container"><router-outlet></router-outlet></div>
         <footer></footer>
     `,
-    directives: [ROUTER_DIRECTIVES, Header, Footer],
-    providers: [
-        ROUTER_PROVIDERS
-    ]
+    directives: [ ROUTER_DIRECTIVES, Header, Footer ]
 })
 
-@RouteConfig([
-    {
-        path: '/home',
-        name: 'Home',
-        component: Home,
-        useAsDefault: true
-    },
-    {
-        path: '/gallery',
-        name: 'Gallery',
-        component: Gallery
-    }
-])
-
 class AppComponent {
+    constructor() {}
 }
 
-bootstrap(AppComponent);
+bootstrap(AppComponent, [
+    APP_ROUTER_PROVIDERS,
+    HTTP_PROVIDERS,
+    API,
+    provide(LocationStrategy, { useClass: PathLocationStrategy })
+])
+.catch(err => console.error(err));;

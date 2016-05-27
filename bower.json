@@ -1,7 +1,7 @@
 {
   "name": "frontend-angular",
   "version": "0.0.1",
-  "description": "frontend angular 2",
+  "description": "Datalytics frontend angular2",
   "private": true,
   "main": "src/app.js",
   "ignore": [],

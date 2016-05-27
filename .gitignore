@@ -1,4 +1,7 @@
 node_modules/
-build/
+dist/
 bower_components/
 typings/
+*.log
+src/**/*.js.map
+src/**/*.js
